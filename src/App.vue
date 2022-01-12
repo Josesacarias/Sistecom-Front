@@ -120,6 +120,17 @@
               </v-list-tile-content>
             </v-list-tile>
 
+            <v-list-tile :to="{ name: 'ClienteEmpresarial'}">
+              <v-list-tile-action>
+                <v-icon>table_chart</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  Clientes Empresarial
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
            
             <v-list-tile :to="{ name: 'clientes'}">
               <v-list-tile-action>
@@ -127,7 +138,7 @@
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  Clientes Empresarial
+                  Clientes Potenciales
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>

@@ -7,6 +7,7 @@ import Rol from './components/Rol.vue'
 import Usuario from './components/Usuario.vue'
 import Cliente from './components/Cliente.vue'
 import Proveedor from './components/Proveedor.vue'
+import ClienteEmpresarial from './components/ClienteEmpresarial.vue'
 
 Vue.use(Router)
 
@@ -48,6 +49,12 @@ export default new Router({
       path: '/proveedores',
       name: 'proveedores',
       component: Proveedor
+    },
+
+    {
+      path: '/ClienteEmpresarial',
+      name: 'ClienteEmpresarial',
+      component: ClienteEmpresarial
     }
   ]
 })
