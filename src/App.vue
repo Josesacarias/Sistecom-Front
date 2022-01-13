@@ -66,6 +66,64 @@
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
+
+
+              <v-list-tile :to="{ name: 'ArticuloCompras'}">
+              <v-list-tile-action>
+                <v-icon>description</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                Articulos
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+            <v-list-tile :to="{ name: 'SolicitudCompra'}">
+              <v-list-tile-action>
+                <v-icon>description</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                 Solicitud de Compras
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+            <v-list-tile :to="{ name: 'OrdenCompra'}">
+              <v-list-tile-action>
+                <v-icon>description</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                 Orden de compra
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+            <v-list-tile :to="{ name: 'proveedores'}">
+              <v-list-tile-action>
+                <v-icon>inventory</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  Proveedores
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+            </v-list-group>
+        </template>
+        <template>
+          <v-list-group>
+            <v-list-tile slot="activator">
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  <v-icon>shopping_bag</v-icon>
+                  Compras
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
             <v-list-tile :to="{ name: ''}">
               <v-list-tile-action>
                 <v-icon>description</v-icon>
@@ -206,12 +264,14 @@
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  Consultas ventas
+                  Reportes
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
 
           </v-list-group>
+
+         
 
           
 

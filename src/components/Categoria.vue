@@ -138,15 +138,17 @@
                 dialog: false,
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
-                    { text: 'Nombre', value: 'nombre' },
-                    { text: 'Descripción', value: 'descripcion', sortable: false  },
-                    { text: 'Estado', value: 'condicion', sortable: false  }                
+                    { text: 'Codigo', value: 'nombre' },
+                    { text: 'Fecha Registro', value: 'fecha', sortable: false  },
+                    { text: 'Nombre', value: 'condicion', sortable: false  },
+                    { text: 'Descripcion', value: 'descripcion', sortable: false  }                
                 ],
                 search: '',
                 editedIndex: -1,
                 id: '',
                 nombre: '',
                 descripcion: '',
+                fecha:'',
                 valida: 0,
                 validaMensaje:[],
                 adModal: 0,

@@ -8,6 +8,9 @@ import Usuario from './components/Usuario.vue'
 import Cliente from './components/Cliente.vue'
 import Proveedor from './components/Proveedor.vue'
 import ClienteEmpresarial from './components/ClienteEmpresarial.vue'
+import ArticuloCompras from './components/ArticuloCompras.vue'
+import SolicitudCompra from './components/SolicitudCompra.vue'
+import OrdenCompra from './components/OrdenCompra.vue'
 
 Vue.use(Router)
 
@@ -55,6 +58,28 @@ export default new Router({
       path: '/ClienteEmpresarial',
       name: 'ClienteEmpresarial',
       component: ClienteEmpresarial
+    },
+
+    {
+      path: '/ArticuloCompras',
+      name: 'ArticuloCompras',
+      component: ArticuloCompras
+    },
+
+
+    {
+      path: '/SolicitudCompra',
+      name: 'SolicitudCompra',
+      component: SolicitudCompra
+    },
+
+    {
+      path: '/OrdenCompra',
+      name: 'OrdenCompra',
+      component: OrdenCompra
     }
+
+
+
   ]
 })

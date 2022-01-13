@@ -2,7 +2,7 @@
     <v-layout align-start>
         <v-flex>
             <v-toolbar flat color="white">
-                <v-toolbar-title>Artículos</v-toolbar-title>
+                <v-toolbar-title>Orden de Compra</v-toolbar-title>
                     <v-divider
                     class="mx-2"
                     inset
@@ -11,84 +11,119 @@
                     <v-spacer></v-spacer>
                     <v-text-field class="text-xs-center" v-model="search" append-icon="search" label="Búsqueda" single-line hide-details></v-text-field>
                     <v-spacer></v-spacer>
-                    <v-dialog v-model="dialog" max-width="800px">
+                    <v-dialog v-model="dialog" max-width="1000px">
                         <v-btn slot="activator" color="primary" dark class="mb-2">Nuevo</v-btn>
                         <v-card>
                             <v-card-title>
-                            <span class="headline">{{ formTitle }}</span>
+                            <span class="headline">Nueva Orden de Compra</span>
                             </v-card-title>
                 
                             <v-card-text>
                             <v-container grid-list-md>
                                 <v-layout wrap>
-                                <v-flex xs6 sm6 md6>
-                                    <v-text-field v-model="codigo" label="Código">
+                                <v-flex xs12 sm6 md6>
+                                    <v-text-field v-model="nombre" label="codigo">
                                     </v-text-field>
                                 </v-flex>
-                                <v-flex xs6 sm6 md6>
-                                    <v-text-field type="date" label="Fecha de Registro">
+
+                                <v-flex xs12 sm6 md6>
+                                    <v-text-field type="date" v-model="num_documento" label="Fecha de Registro">
                                     </v-text-field>
-                                </v-flex>
-                                <v-flex xs12 sm12 md12>
-                                    <v-text-field v-model="nombre" label="Nombre"></v-text-field>
-                                </v-flex>
-                                <v-flex xs6 sm6 md6>
-                                    <v-text-field v-model="codigo" label="Código sku">
-                                    </v-text-field>
-                                </v-flex>
-                                 <v-flex xs6 sm6 md6>
-                                    <v-text-field v-model="codigo" label="Código barras">
-                                    </v-text-field>
-                                </v-flex>
-                                <v-flex xs6 sm6 md6>
-                                    <v-select v-model="idcategoria"
-                                    :items="categorias" label="Categoría">
-                                    </v-select>
-                                </v-flex>
-                                <v-flex xs6 sm6 md6>
-                                    <v-select v-model="idcategoria"
-                                    :items="categorias" label="codigo proveedor ">
-                                    </v-select>
-                                </v-flex>
-                                 <v-flex xs6 sm6 md6>
-                                    <v-select v-model="idcategoria"
-                                    :items="categorias" label="Nombre proveedor ">
-                                    </v-select>
-                                </v-flex>
-                                <v-flex xs6 sm6 md6>
-                                    <v-text-field  v-model="codigo" label="Factura proveedor">
-                                    </v-text-field>
-                                </v-flex>
-                                <v-flex xs6 sm6 md6>
-                                    <v-text-field type="number" v-model="codigo" label="Precio de compra">
-                                    </v-text-field>
-                                </v-flex>
-                               
-                                <v-flex xs6 sm6 md6>
-                                    <v-select v-model="idcategoria"
-                                    :items="categorias" label="unidad de medida">
-                                    </v-select>
                                 </v-flex>
                                 
-                                <v-flex xs6 sm6 md6>
-                                    <v-text-field type="number" v-model="stock" label="IVA">
+                                <v-flex xs12 sm6 md6>
+                                    <v-text-field
+                                     label="Nombre Solicitante">
                                     </v-text-field>
                                 </v-flex>
-                                <v-flex xs6 sm6 md6>
-                                    <v-text-field type="number"  label="Precio Venta">
+
+                                    <v-flex xs12 sm6 md6>
+                                    <v-select 
+                                    label="Producto Solicitado">
+                                    </v-select>
+                                </v-flex>
+
+                                <v-flex xs12 sm6 md6>
+                                    <v-text-field type="number" label="Cantidad">
                                     </v-text-field>
                                 </v-flex>
-                                <v-flex xs6 sm6 md6>
-                                    <v-text-field v-model="codigo" label="Maximo de producto">
+                                
+
+                                 <v-flex xs12 sm6 md6>
+                                    <v-text-field type="date" label="Fecha de Solicitud">
                                     </v-text-field>
                                 </v-flex>
-                                <v-flex xs6 sm6 md6>
-                                    <v-text-field v-model="codigo" label="Minimo de producto">
+
+                                <v-flex xs12 sm6 md6>
+                                    <v-text-field type="date" label="Fecha de Entrega">
                                     </v-text-field>
                                 </v-flex>
+
+
+                              <v-flex xs12 sm6 md6>
+                                    <v-select 
+                                    label="Proveedor">
+                                    </v-select>
+                                </v-flex>
+
+                                <v-flex xs6 sm6 md6>
+                                    <v-text-field type=" number " label="Precio Unitario">
+                                    </v-text-field>
+                                </v-flex>
+
+
+                                <v-flex xs6 sm6 md6>
+                                    <v-text-field type=" number " label="Precio Total">
+                                    </v-text-field>
+                                </v-flex>
+
+
+
+                                 <v-flex xs6 sm6 md6>
+                                    <v-text-field label="Convenio de Pago">
+                                    </v-text-field>
+                                </v-flex>
+
+                                 <v-flex xs12 sm6 md6>
+                                    <v-select 
+                                    label="Tipo de Moneda">
+                                    </v-select>
+                                </v-flex>
+
+                                <v-flex xs12 sm6 md6>
+                                    <v-select 
+                                    label="Tipo de Pago">
+                                    </v-select>
+                                </v-flex>
+
+                                <v-flex xs6 sm6 md6>
+                                    <v-text-field label="Descuento %">
+                                    </v-text-field>
+                                </v-flex>
+
+                                <v-flex xs6 sm6 md6>
+                                    <v-text-field type=" number " label="Pago Adelantado">
+                                    </v-text-field>
+                                </v-flex>
+
+                                <v-flex xs6 sm6 md6>
+                                    <v-text-field label="Laborado Por">
+                                    </v-text-field>
+                                </v-flex>
+
+                                 <v-flex xs12 sm12 md12>
+                                    <v-text-field label="Direccion de Despacho">
+                                    </v-text-field>
+                                </v-flex>
+
                                 <v-flex xs12 sm12 md12>
-                                    <v-text-field v-model="descripcion" label="Descripción"></v-text-field>
+                                    <v-text-field label="Descripcion">
+                                    </v-text-field>
                                 </v-flex>
+                                 
+
+                                
+                                
                                 <v-flex xs12 sm12 md12 v-show="valida">
                                     <div class="red--text" v-for="v in validaMensaje" :key="v" v-text="v">
                                     </div>
@@ -132,7 +167,7 @@
                 </v-toolbar>
             <v-data-table
                 :headers="headers"
-                :items="articulos"
+                :items="usuarios"
                 :search="search"
                 class="elevation-1"
             >
@@ -162,12 +197,13 @@
                             </v-icon>
                         </template>
                     </td>
-                    <td>{{ props.item.codigo }}</td>
                     <td>{{ props.item.nombre }}</td>
-                    <td>{{ props.item.categoria }}</td>
-                    <td>{{ props.item.stock }}</td>
-                    <td>{{ props.item.precio_venta }}</td>
-                    <td>{{ props.item.descripcion }}</td>
+                    <td>{{ props.item.rol }}</td>
+                    <td>{{ props.item.tipo_documento }}</td>
+                    <td>{{ props.item.num_documento }}</td>
+                    <td>{{ props.item.direccion }}</td>
+                    <td>{{ props.item.telefono }}</td>
+                    <td>{{ props.item.email }}</td>
                     <td>
                         <div v-if="props.item.condicion">
                             <span class="blue--text">Activo</span>
@@ -189,52 +225,35 @@
     export default {
         data(){
             return {
-                articulos:[],                
+                usuarios:[],                
                 dialog: false,
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
-                    { text: 'Código', value: 'codigo', sortable: false },
-                    { text: 'Fecha Registro', value: 'codigo', sortable: false },
                     { text: 'Nombre', value: 'nombre' },
-                    { text: 'Codigo SKU', value: 'sku' },
-                    { text: 'Codigo de barras', value: 'codigo_barras' },
-                    { text: 'Categoria', value: 'categoria' },
-                    { text: 'Codigo Proveedor', value: 'codigo_proveedor' },
-                    { text: 'Nombre Proveedor', value: 'nombre_proveedor' },
-                    { text: 'Factura Proveedor', value: 'factura_proveedor' },
-                    { text: 'Precio Compra', value: 'precio_compra' },
-                    { text: 'Unidad de Medida', value: 'unidad_medida' },
-                    { text: 'IVA', value: 'iva' },
-                    { text: 'Precio Venta', value: 'precio_venta' },
-                    { text: 'Maximo Producto', value: 'maximo_producto' },
-                    { text: 'Minimo Producto', value: 'minimo_producto' },
-                    { text: 'Descripción', value: 'descripcion', sortable: false  }
-                             
+                    { text: 'Rol', value: 'rol' },
+                    { text: 'Tipo Documento', value: 'tipo_documento' },
+                    { text: 'Número Documento', value: 'num_documento', sortable: false  },
+                    { text: 'Dirección', value: 'direccion', sortable: false  },
+                    { text: 'Teléfono', value: 'telefono', sortable: false  },
+                    { text: 'Email', value: 'email', sortable: false  },
+                    { text: 'Estado', value: 'condicion', sortable: false  }                
                 ],
                 search: '',
                 editedIndex: -1,
                 id: '',
-                idcategoria:'',
-                categorias:[                   
+                idrol:'',
+                roles:[                   
                 ],
-                codigo: '',
-                fecha:'',
-                nombre: '',
-                sku:'',
-                codigo_barras:'',
-                categoria:'',
-                codigo_proveedor:'',
-                nombre_proveedor:'',
-                factura_proveedor:'',
-                precio_compra:'',
-                unidad_medida:'',
-                iva:'',
-                precio_venta:'',
-                maximo_producto:'',
-                minimo_producto:'',
-                stock: 0,
-                precio_venta: 0,
-                descripcion: '',
+                nombre:'',
+                tipo_documento: '',
+                documentos: ['DNI','RUC','PASAPORTE','CEDULA'],
+                num_documento: '',
+                direccion: '',
+                telefono: '',
+                email: '',
+                password:'',
+                actPassword:false,
+                passwordAnt:'',
                 valida: 0,
                 validaMensaje:[],
                 adModal: 0,
@@ -245,7 +264,7 @@
         },
         computed: {
             formTitle () {
-                return this.editedIndex === -1 ? 'Nuevo artículo' : 'Actualizar artículo'
+                return this.editedIndex === -1 ? 'Nuevo usuario' : 'Actualizar usuario'
             }
         },
 
@@ -262,33 +281,36 @@
         methods:{
             listar(){
                 let me=this;
-                axios.get('api/Articulos/Listar').then(function(response){
+                axios.get('api/Usuarios/Listar').then(function(response){
                     //console.log(response);
-                    me.articulos=response.data;
+                    me.usuarios=response.data;
                 }).catch(function(error){
                     console.log(error);
                 });
             },
             select(){
                 let me=this;
-                var categoriasArray=[];
-                axios.get('api/Categorias/Select').then(function(response){
-                    categoriasArray=response.data;
-                    categoriasArray.map(function(x){
-                        me.categorias.push({text: x.nombre,value:x.idcategoria});
+                var rolesArray=[];
+                axios.get('api/Roles/Select').then(function(response){
+                    rolesArray=response.data;
+                    rolesArray.map(function(x){
+                        me.roles.push({text: x.nombre,value:x.idrol});
                     });
                 }).catch(function(error){
                     console.log(error);
                 });
             },
             editItem (item) {
-                this.id=item.idarticulo;
-                this.idcategoria=item.idcategoria;
-                this.codigo=item.codigo;
+                this.id=item.idusuario;
+                this.idrol=item.idrol;
                 this.nombre=item.nombre;
-                this.stock=item.stock;
-                this.precio_venta=item.precio_venta;
-                this.descripcion=item.descripcion;
+                this.tipo_documento=item.tipo_documento;
+                this.num_documento=item.num_documento;
+                this.direccion=item.direccion;
+                this.telefono=item.telefono;
+                this.email=item.email;
+                this.password=item.password_hash;
+                this.passwordAnt=item.password_hash;
                 this.editedIndex=1;
                 this.dialog = true
             },
@@ -298,12 +320,16 @@
             },
             limpiar(){
                 this.id="";
-                this.idcategoria="";
-                this.codigo="";
+                this.idrol="";
                 this.nombre="";
-                this.stock="";
-                this.precio_venta="";
-                this.descripcion="";
+                this.tipo_documento="";
+                this.num_documento="";
+                this.direccion="";
+                this.telefono="";
+                this.email="";
+                this.password="";
+                this.passwordAnt="";
+                this.actPassword=false;
                 this.editedIndex=-1;
             },
             guardar () {
@@ -314,14 +340,20 @@
                     //Código para editar
                     //Código para guardar
                     let me=this;
-                    axios.put('api/Articulos/Actualizar',{
-                        'idarticulo':me.id,
-                        'idcategoria':me.idcategoria,
-                        'codigo':me.codigo,
-                        'nombre': me.nombre,
-                        'stock':me.stock,
-                        'precio_venta':me.precio_venta,
-                        'descripcion': me.descripcion
+                    if (me.password!=me.passwordAnt){
+                        me.actPassword=true;
+                    }
+                    axios.put('api/Usuarios/Actualizar',{
+                        'idusuario':me.id,
+                        'idrol':me.idrol,
+                        'nombre':me.nombre,
+                        'tipo_documento': me.tipo_documento,
+                        'num_documento':me.num_documento,
+                        'direccion':me.direccion,
+                        'telefono': me.telefono,
+                        'email':me.email,
+                        'password':me.password,
+                        'act_password':me.actPassword                        
                     }).then(function(response){
                         me.close();
                         me.listar();
@@ -332,13 +364,15 @@
                 } else {
                     //Código para guardar
                     let me=this;
-                    axios.post('api/Articulos/Crear',{
-                        'idcategoria':me.idcategoria,
-                        'codigo':me.codigo,
-                        'nombre': me.nombre,
-                        'stock':me.stock,
-                        'precio_venta':me.precio_venta,
-                        'descripcion': me.descripcion
+                    axios.post('api/Usuarios/Crear',{
+                        'idrol':me.idrol,
+                        'nombre':me.nombre,
+                        'tipo_documento': me.tipo_documento,
+                        'num_documento':me.num_documento,
+                        'direccion':me.direccion,
+                        'telefono': me.telefono,
+                        'email':me.email,
+                        'password':me.password
                     }).then(function(response){
                         me.close();
                         me.listar();
@@ -352,17 +386,21 @@
                 this.valida=0;
                 this.validaMensaje=[];
 
-                if (this.nombre.length<3 || this.nombre.length>50){
-                    this.validaMensaje.push("El nombre debe tener más de 3 caracteres y menos de 50 caracteres.");
+                if (this.nombre.length<3 || this.nombre.length>100){
+                    this.validaMensaje.push("El nombre debe tener más de 3 caracteres y menos de 100 caracteres.");
                 }
-                if (!this.idcategoria){
-                    this.validaMensaje.push("Seleccione una categoría.");
+                if (!this.idrol){
+                    this.validaMensaje.push("Seleccione un rol.");
                 }
-                if (!this.stock || this.stock==0){
-                    this.validaMensaje.push("Ingrese el stock inicial del artículo.");
+                if (!this.tipo_documento){
+                    this.validaMensaje.push("Seleccione un tipo documento.");
                 }
-                if (!this.precio_venta || this.precio_venta==0){
-                    this.validaMensaje.push("Ingrese el precio de venta del artículo.");
+
+                if (!this.email){
+                    this.validaMensaje.push("Ingrese el email del usuario.");
+                }
+                if (!this.password){
+                    this.validaMensaje.push("Ingrese el password del usuario.");
                 }
                 if (this.validaMensaje.length){
                     this.valida=1;
@@ -372,7 +410,7 @@
             activarDesactivarMostrar(accion,item){
                 this.adModal=1;
                 this.adNombre=item.nombre;
-                this.adId=item.idarticulo;                
+                this.adId=item.idusuario;                
                 if (accion==1){
                     this.adAccion=1;
                 }
@@ -388,7 +426,7 @@
             },
             activar(){
                 let me=this;
-                axios.put('api/Articulos/Activar/'+this.adId,{}).then(function(response){
+                axios.put('api/Usuarios/Activar/'+this.adId,{}).then(function(response){
                     me.adModal=0;
                     me.adAccion=0;
                     me.adNombre="";
@@ -400,7 +438,7 @@
             },
             desactivar(){
                 let me=this;
-                axios.put('api/Articulos/Desactivar/'+this.adId,{}).then(function(response){
+                axios.put('api/Usuarios/Desactivar/'+this.adId,{}).then(function(response){
                     me.adModal=0;
                     me.adAccion=0;
                     me.adNombre="";
