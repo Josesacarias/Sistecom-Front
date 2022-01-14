@@ -11,6 +11,7 @@ import ClienteEmpresarial from './components/ClienteEmpresarial.vue'
 import ArticuloCompras from './components/ArticuloCompras.vue'
 import SolicitudCompra from './components/SolicitudCompra.vue'
 import OrdenCompra from './components/OrdenCompra.vue'
+import prueba from './components/prueba.vue'
 
 Vue.use(Router)
 
@@ -77,7 +78,15 @@ export default new Router({
       path: '/OrdenCompra',
       name: 'OrdenCompra',
       component: OrdenCompra
-    }
+    },
+
+
+    {
+      path: '/prueba',
+      name: 'prueba',
+      component: prueba
+    },
+
 
 
 

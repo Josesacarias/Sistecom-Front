@@ -20,7 +20,7 @@
 
 
         <template>
-          <v-list-group>
+          <v-list-group color="teal">
             <v-list-tile slot="activator">
               <v-list-tile-content>
                 <v-list-tile-title>
@@ -114,13 +114,15 @@
 
             </v-list-group>
         </template>
+       
+       
         <template>
           <v-list-group>
             <v-list-tile slot="activator">
               <v-list-tile-content>
                 <v-list-tile-title>
                   <v-icon>shopping_bag</v-icon>
-                  Compras
+                  Tickets
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
@@ -130,11 +132,11 @@
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  Ingresos
+                  prueba
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile :to="{ name: 'proveedores'}">
+            <v-list-tile :to="{ name: 'prueba'}">
               <v-list-tile-action>
                 <v-icon>inventory</v-icon>
               </v-list-tile-action>
