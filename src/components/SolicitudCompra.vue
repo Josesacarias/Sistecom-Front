@@ -173,14 +173,15 @@
                 dialog: false,
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
-                    { text: 'Nombre', value: 'nombre' },
-                    { text: 'Rol', value: 'rol' },
-                    { text: 'Tipo Documento', value: 'tipo_documento' },
-                    { text: 'Número Documento', value: 'num_documento', sortable: false  },
-                    { text: 'Dirección', value: 'direccion', sortable: false  },
-                    { text: 'Teléfono', value: 'telefono', sortable: false  },
-                    { text: 'Email', value: 'email', sortable: false  },
-                    { text: 'Estado', value: 'condicion', sortable: false  }                
+                    { text: 'Codigo', value: 'codigo' },
+                    { text: 'Fecha de Registro', value: 'fecha_reg' },
+                    { text: 'Nombre de Solicitud', value: 'Nombre de Solicitante' },
+                    { text: 'Dpi', value: 'dpi', sortable: false  },
+                    { text: 'Fecha de Entrega', value: 'entrega', sortable: false  },
+                    { text: 'Fecha de solicitud', value: 'fecha_sol', sortable: false  },
+                    { text: 'Cantidad', value: 'cantidad', sortable: false  },
+                    { text: 'Descripcion', value: 'des', sortable: false  }
+                                    
                 ],
                 search: '',
                 editedIndex: -1,

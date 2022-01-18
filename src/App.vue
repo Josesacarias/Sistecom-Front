@@ -18,6 +18,17 @@
           </v-list-tile>
         </template>
 
+        <template>
+          <v-list-tile :to="{name:'Login'}">
+            <v-list-tile-action>
+              <v-icon>login</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-title>
+              Login
+            </v-list-tile-title>
+          </v-list-tile>
+        </template>
+
 
         <template>
           <v-list-group color="teal">

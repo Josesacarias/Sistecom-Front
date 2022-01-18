@@ -12,6 +12,7 @@ import ArticuloCompras from './components/ArticuloCompras.vue'
 import SolicitudCompra from './components/SolicitudCompra.vue'
 import OrdenCompra from './components/OrdenCompra.vue'
 import prueba from './components/prueba.vue'
+import Login from './components/Login.vue'
 
 Vue.use(Router)
 
@@ -87,6 +88,11 @@ export default new Router({
       component: prueba
     },
 
+    {
+      path: '/Login ',
+      name: 'Login',
+      component: Login
+    },
 
 
 

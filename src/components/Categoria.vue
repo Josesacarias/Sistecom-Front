@@ -111,6 +111,7 @@
                             </v-icon>
                         </template>
                     </td>
+                    <td>{{ props.item.fecha_registro }}</td>
                     <td>{{ props.item.nombre }}</td>
                     <td>{{ props.item.descripcion }}</td>
                     <td>
@@ -139,7 +140,7 @@
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
                     { text: 'Codigo', value: 'nombre' },
-                    { text: 'Fecha Registro', value: 'fecha', sortable: false  },
+                    { text: 'Fecha Registro', value: 'fecha_registro', sortable: false  },
                     { text: 'Nombre', value: 'condicion', sortable: false  },
                     { text: 'Descripcion', value: 'descripcion', sortable: false  }                
                 ],
@@ -148,7 +149,7 @@
                 id: '',
                 nombre: '',
                 descripcion: '',
-                fecha:'',
+                fecha_registro:'',
                 valida: 0,
                 validaMensaje:[],
                 adModal: 0,
@@ -175,7 +176,7 @@
         methods:{
             listar(){
                 let me=this;
-                axios.get('api/Categorias/Listar').then(function(response){
+                axios.get('URL').then(function(response){
                     //console.log(response);
                     me.categorias=response.data;
                 }).catch(function(error){
@@ -213,8 +214,9 @@
                     //Código para editar
                     //Código para guardar
                     let me=this;
-                    axios.put('api/Categorias/Actualizar',{
+                    axios.put('URL',{
                         'idcategoria':me.id,
+                        'fecha registro': me.fecha_registro,
                         'nombre': me.nombre,
                         'descripcion': me.descripcion
                     }).then(function(response){
@@ -227,7 +229,8 @@
                 } else {
                     //Código para guardar
                     let me=this;
-                    axios.post('api/Categorias/Crear',{
+                    axios.post('URL',{
+                        'Fecha Registro': me.fecha_registro,
                         'nombre': me.nombre,
                         'descripcion': me.descripcion
                     }).then(function(response){
@@ -270,7 +273,7 @@
             },
             activar(){
                 let me=this;
-                axios.put('api/Categorias/Activar/'+this.adId,{}).then(function(response){
+                axios.put('URL'+this.adId,{}).then(function(response){
                     me.adModal=0;
                     me.adAccion=0;
                     me.adNombre="";
@@ -282,7 +285,7 @@
             },
             desactivar(){
                 let me=this;
-                axios.put('api/Categorias/Desactivar/'+this.adId,{}).then(function(response){
+                axios.put('URL'+this.adId,{}).then(function(response){
                     me.adModal=0;
                     me.adAccion=0;
                     me.adNombre="";

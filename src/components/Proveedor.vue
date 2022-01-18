@@ -155,13 +155,21 @@
                 dialog: false,
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
+                    { text: 'Codigo', value: 'codigo' },
+                    { text: 'Fecha de Registro', value: 'fecha_registro' },
                     { text: 'Nombre', value: 'nombre' },
-                    { text: 'Tipo Persona', value: 'tipo_persona' },
-                    { text: 'Tipo Documento', value: 'tipo_documento' },
-                    { text: 'Número Documento', value: 'num_documento', sortable: false  },
-                    { text: 'Dirección', value: 'direccion', sortable: false  },
-                    { text: 'Teléfono', value: 'telefono', sortable: false  },
-                    { text: 'Email', value: 'email', sortable: false  }                
+                    { text: 'Nit', value: 'nit', sortable: false  },
+                    { text: 'Numero de documento', value: 'num_documento', sortable: false  },
+                    { text: 'Direccion', value: 'direccion', sortable: false  },
+                    { text: 'Telefono', value: 'telefono', sortable: false  },
+                    { text: 'Email', value: 'email', sortable: false  },
+                    { text: 'Numero de cuenta 1', value: 'cuenta1', sortable: false  },
+                    { text: 'Numero de cuenta 2', value: 'cuenta2', sortable: false  },
+                    { text: 'Numero de cuenta 3', value: 'cuenta3', sortable: false  },
+                    { text: 'Metodo de Pago', value: 'meto_pago', sortable: false  },
+                    { text: 'Banco', value: 'banco', sortable: false  },
+                    { text: 'Descuento', value: 'descuento', sortable: false  }
+
                 ],
                 search: '',
                 editedIndex: -1,
