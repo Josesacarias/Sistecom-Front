@@ -163,8 +163,20 @@
                         </template>
                     </td>
                     <td>{{ props.item.codigo }}</td>
+                    <td>{{ props.item.fecha_registro }}</td>
                     <td>{{ props.item.nombre }}</td>
+                    <td>{{ props.item.codigo_sku }}</td>
+                    <td>{{ props.item.codigo_barras }}</td>
                     <td>{{ props.item.categoria }}</td>
+                    <td>{{ props.item.codigo_proveedor}}</td>
+                    <td>{{ props.item.nombre_proveedor }}</td>
+                    <td>{{ props.item.factura_proveedor }}</td>
+                    <td>{{ props.item.precio_compra }}</td>
+                    <td>{{ props.item.unidad_medida }}</td>
+                    <td>{{ props.item.iva }}</td>
+                    <td>{{ props.item.precio_venta }}</td>
+                    <td>{{ props.item.maximo_producto }}</td>
+                    <td>{{ props.item.minimo_producto }}</td>
                     <td>{{ props.item.stock }}</td>
                     <td>{{ props.item.precio_venta }}</td>
                     <td>{{ props.item.descripcion }}</td>
@@ -194,7 +206,7 @@
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
                     { text: 'Código', value: 'codigo', sortable: false },
-                    { text: 'Fecha Registro', value: 'codigo', sortable: false },
+                    { text: 'Fecha Registro', value: 'fecha_registro', sortable: false },
                     { text: 'Nombre', value: 'nombre' },
                     { text: 'Codigo SKU', value: 'sku' },
                     { text: 'Codigo de barras', value: 'codigo_barras' },
@@ -218,7 +230,7 @@
                 categorias:[                   
                 ],
                 codigo: '',
-                fecha:'',
+                fecha_registro:'',
                 nombre: '',
                 sku:'',
                 codigo_barras:'',
@@ -262,7 +274,7 @@
         methods:{
             listar(){
                 let me=this;
-                axios.get('api/Articulos/Listar').then(function(response){
+                axios.get('url').then(function(response){
                     //console.log(response);
                     me.articulos=response.data;
                 }).catch(function(error){
@@ -272,7 +284,7 @@
             select(){
                 let me=this;
                 var categoriasArray=[];
-                axios.get('api/Categorias/Select').then(function(response){
+                axios.get('url').then(function(response){
                     categoriasArray=response.data;
                     categoriasArray.map(function(x){
                         me.categorias.push({text: x.nombre,value:x.idcategoria});
@@ -283,8 +295,19 @@
             },
             editItem (item) {
                 this.id=item.idarticulo;
+                this.id=item.fecha_registro;
                 this.idcategoria=item.idcategoria;
-                this.codigo=item.codigo;
+                this.codigo=item.codigo_sku;
+                this.codigo=item.codigo_barras;
+                this.codigo=item.categoria;
+                this.codigo=item.codigo_proveedor;
+                this.codigo=item.nombre_proveedor;
+                this.codigo=item.factura_proveedor;
+                this.codigo=item.precio_compra;
+                this.codigo=item.unidad_medida;
+                this.codigo=item.iva;
+                this.codigo=item.maximo_producto;
+                this.codigo=item.minimo_producto;
                 this.nombre=item.nombre;
                 this.stock=item.stock;
                 this.precio_venta=item.precio_venta;
@@ -298,8 +321,19 @@
             },
             limpiar(){
                 this.id="";
+                this.fecha_registro="";
                 this.idcategoria="";
-                this.codigo="";
+                this.codigo_sku="";
+                this.codigo_barras="";
+                this.categoria="";
+                this.codigo_proveedor="";
+                this.nombre_proveedor="";
+                this.factura_proveedor="";
+                this.precio_compra="";
+                this.unidad_medida="";
+                this.iva="";
+                this.maximo_producto="";
+                this.minimo_producto="";
                 this.nombre="";
                 this.stock="";
                 this.precio_venta="";
@@ -314,11 +348,22 @@
                     //Código para editar
                     //Código para guardar
                     let me=this;
-                    axios.put('api/Articulos/Actualizar',{
+                    axios.put('url',{
                         'idarticulo':me.id,
-                        'idcategoria':me.idcategoria,
-                        'codigo':me.codigo,
+                        'fecha_registro':me.fecha_registro,
                         'nombre': me.nombre,
+                        'idcategoria':me.idcategoria,
+                        'codigo_sku':me.codigo_sku,
+                        'codigo_barras':me.codigo_barras,
+                        'codigo_proveedor':me.codigo_proveedor,
+                        'nombre_proveedor':me.nombre_proveedor,
+                        'factura_proveedor':me.factura_proveedor,
+                        'precio_compra':me.precio_compra,
+                        'unidad_medida':me.unidad_medida,
+                        'iva':me.iva,
+                        'precio_venta': me.precio_venta,
+                        'maximo_producto': me.maximo_producto,
+                        'minimo_producto': me.minimo_producto,
                         'stock':me.stock,
                         'precio_venta':me.precio_venta,
                         'descripcion': me.descripcion
@@ -332,10 +377,22 @@
                 } else {
                     //Código para guardar
                     let me=this;
-                    axios.post('api/Articulos/Crear',{
-                        'idcategoria':me.idcategoria,
-                        'codigo':me.codigo,
+                    axios.post('url',{
+                        'idarticulo':me.id,
+                        'fecha_registro':me.fecha_registro,
                         'nombre': me.nombre,
+                        'idcategoria':me.idcategoria,
+                        'codigo_sku':me.codigo_sku,
+                        'codigo_barras':me.codigo_barras,
+                        'codigo_proveedor':me.codigo_proveedor,
+                        'nombre_proveedor':me.nombre_proveedor,
+                        'factura_proveedor':me.factura_proveedor,
+                        'precio_compra':me.precio_compra,
+                        'unidad_medida':me.unidad_medida,
+                        'iva':me.iva,
+                        'precio_venta': me.precio_venta,
+                        'maximo_producto': me.maximo_producto,
+                        'minimo_producto': me.minimo_producto,
                         'stock':me.stock,
                         'precio_venta':me.precio_venta,
                         'descripcion': me.descripcion
