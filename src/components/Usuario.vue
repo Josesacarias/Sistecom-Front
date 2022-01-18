@@ -11,7 +11,7 @@
                     <v-spacer></v-spacer>
                     <v-text-field class="text-xs-center" v-model="search" append-icon="search" label="Búsqueda" single-line hide-details></v-text-field>
                     <v-spacer></v-spacer>
-                    <v-dialog v-model="dialog" max-width="500px">
+                    <v-dialog v-model="dialog" max-width="1000px">
                         <v-btn slot="activator" color="primary" dark class="mb-2">Nuevo</v-btn>
                         <v-card>
                             <v-card-title>
@@ -21,16 +21,40 @@
                             <v-card-text>
                             <v-container grid-list-md>
                                 <v-layout wrap>
-                                <v-flex xs12 sm6 md6>
-                                    <v-text-field v-model="nombre" label="codigo">
+                                    <v-flex xs12 sm6 md6>
+                                    <v-text-field  v-model="id" label="Codigo">
                                     </v-text-field>
                                 </v-flex>
 
                                 <v-flex xs12 sm6 md6>
-                                    <v-text-field type="date" v-model="num_documento" label="Fecha de Registro">
+                                    <v-text-field Type="date" v-model="fecha_registro" label="Fecha Registro">
                                     </v-text-field>
                                 </v-flex>
-                                
+                                <v-flex xs12 sm6 md6>
+                                    <v-text-field v-model="primer_nombre" label="Primer Nombre">
+                                    </v-text-field>
+                                </v-flex>
+
+                                <v-flex xs12 sm6 md6>
+                                    <v-text-field v-model="segundo_nombre" label="Segundo Nombre">
+                                    </v-text-field>
+                                </v-flex>
+
+                                 <v-flex xs12 sm6 md6>
+                                    <v-text-field v-model="primer_apellido" label="Primer Apellido">
+                                    </v-text-field>
+                                </v-flex>
+
+                                <v-flex xs12 sm6 md6>
+                                    <v-text-field v-model="Segundo_apellido" label="Segundo Apellido">
+                                    </v-text-field>
+                                </v-flex>
+
+                                <v-flex xs12 sm6 md6>
+                                    <v-select v-model="idrol"
+                                    :items="roles" label="Rol">
+                                    </v-select>
+                                </v-flex>
                                 <v-flex xs12 sm6 md6>
                                     <v-select v-model="tipo_documento"
                                     :items="documentos" label="Tipo Documento">
@@ -40,34 +64,6 @@
                                     <v-text-field v-model="num_documento" label="Número Documento">
                                     </v-text-field>
                                 </v-flex>
-
-                                <v-flex xs12 sm6 md6>
-                                    <v-text-field v-model="nombre" label="Primer nombre">
-                                    </v-text-field>
-                                </v-flex>
-
-                                <v-flex xs12 sm6 md6>
-                                    <v-text-field v-model="nombre" label="Segundo nombre">
-                                    </v-text-field>
-                                </v-flex>
-
-                                <v-flex xs12 sm6 md6>
-                                    <v-text-field v-model="nombre" label="primer apellido">
-                                    </v-text-field>
-                                </v-flex>
-
-                                <v-flex xs12 sm6 md6>
-                                    <v-text-field v-model="nombre" label="Segundo apellido">
-                                    </v-text-field>
-                                </v-flex>
-
-                                <v-flex xs12 sm6 md6>
-                                    <v-select v-model="idrol"
-                                    :items="roles" label="Rol">
-                                    </v-select>
-                                </v-flex>
-
-
                                 <v-flex xs12 sm6 md6>
                                     <v-text-field v-model="direccion" label="Dirección">
                                     </v-text-field>
@@ -157,7 +153,11 @@
                             </v-icon>
                         </template>
                     </td>
-                    <td>{{ props.item.nombre }}</td>
+                    <td>{{ props.item.fecha_registro }}</td>
+                    <td>{{ props.item.primer_nombre }}</td>
+                    <td>{{ props.item.segundo_nombre }}</td>
+                    <td>{{ props.item.primer_apellido }}</td>
+                    <td>{{ props.item.segundo_apellido }}</td>
                     <td>{{ props.item.rol }}</td>
                     <td>{{ props.item.tipo_documento }}</td>
                     <td>{{ props.item.num_documento }}</td>
@@ -189,7 +189,10 @@
                 dialog: false,
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
-                    { text: 'Nombre', value: 'nombre' },
+                    { text: 'Codigo', value: 'id'},
+                    { text: 'Fecha Registro', value: 'fecha_registro'},
+                    { text: 'Primer Nombre', value: 'primer_nombre' },
+                    { text: 'Segundo Nombre', value: 'segund_nombre' },
                     { text: 'Rol', value: 'rol' },
                     { text: 'Tipo Documento', value: 'tipo_documento' },
                     { text: 'Número Documento', value: 'num_documento', sortable: false  },
@@ -204,9 +207,13 @@
                 idrol:'',
                 roles:[                   
                 ],
-                nombre:'',
+                primer_nombre:'',
+                segundo_nombre:'',
+                primer_apellido:'',
+                Segundo_apellido:'',
+                fecha_registro:'',
                 tipo_documento: '',
-                documentos: ['DNI','RUC','PASAPORTE','CEDULA'],
+                documentos: ['DPI','PASAPORTE'],
                 num_documento: '',
                 direccion: '',
                 telefono: '',
@@ -242,7 +249,7 @@
             listar(){
                 let me=this;
                 axios.get('api/Usuarios/Listar').then(function(response){
-                    //console.log(response);
+                    //console.log(response);api/Usuarios/Listar
                     me.usuarios=response.data;
                 }).catch(function(error){
                     console.log(error);
@@ -252,6 +259,7 @@
                 let me=this;
                 var rolesArray=[];
                 axios.get('api/Roles/Select').then(function(response){
+                    
                     rolesArray=response.data;
                     rolesArray.map(function(x){
                         me.roles.push({text: x.nombre,value:x.idrol});
@@ -263,7 +271,11 @@
             editItem (item) {
                 this.id=item.idusuario;
                 this.idrol=item.idrol;
-                this.nombre=item.nombre;
+                this.fecha_registro=item.fecha_registro;
+                this.primer_nombre=item.primer_nombre;
+                this.segundo_nombre=item.segundo_nombre;
+                this.primer_apellido=item.primer_apellido;
+                this.segundo_apellido=item.segundo_apellido;
                 this.tipo_documento=item.tipo_documento;
                 this.num_documento=item.num_documento;
                 this.direccion=item.direccion;
@@ -281,7 +293,11 @@
             limpiar(){
                 this.id="";
                 this.idrol="";
-                this.nombre="";
+                this.fecha_registro='';
+                this.primer_nombre="";
+                this.segundo_nombre="";
+                this.primer_apellido="";
+                this.Segundo_apellido="";
                 this.tipo_documento="";
                 this.num_documento="";
                 this.direccion="";
@@ -303,10 +319,14 @@
                     if (me.password!=me.passwordAnt){
                         me.actPassword=true;
                     }
-                    axios.put('api/Usuarios/Actualizar',{
+                    axios.put('URL',{
                         'idusuario':me.id,
                         'idrol':me.idrol,
-                        'nombre':me.nombre,
+                        'fecha_registro':me.primer_apellido,
+                        'nombre':me.primer_nombre,
+                        'nombre':me.segundo_nombre,
+                        'nombre':me.primer_apellido,
+                        'nombre':me.segundo_apellido,
                         'tipo_documento': me.tipo_documento,
                         'num_documento':me.num_documento,
                         'direccion':me.direccion,
@@ -324,7 +344,7 @@
                 } else {
                     //Código para guardar
                     let me=this;
-                    axios.post('api/Usuarios/Crear',{
+                    axios.post('url',{
                         'idrol':me.idrol,
                         'nombre':me.nombre,
                         'tipo_documento': me.tipo_documento,
@@ -386,7 +406,7 @@
             },
             activar(){
                 let me=this;
-                axios.put('api/Usuarios/Activar/'+this.adId,{}).then(function(response){
+                axios.put('url'+this.adId,{}).then(function(response){
                     me.adModal=0;
                     me.adAccion=0;
                     me.adNombre="";
@@ -398,7 +418,7 @@
             },
             desactivar(){
                 let me=this;
-                axios.put('api/Usuarios/Desactivar/'+this.adId,{}).then(function(response){
+                axios.put('url'+this.adId,{}).then(function(response){
                     me.adModal=0;
                     me.adAccion=0;
                     me.adNombre="";

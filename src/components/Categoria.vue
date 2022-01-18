@@ -21,14 +21,14 @@
                             <v-card-text>
                             <v-container grid-list-md>
                                 <v-layout wrap>
-                                   <v-flex xs6 sm6 md6>
-                                    <v-select 
-                                     label="Codigo">
-                                    </v-select>
-                                </v-flex>  
+                                   
+                                    <v-flex xs6 sm6 md6>
+                                    <v-text-field v-model="id" label="Codigo">
+                                    </v-text-field>
+                                </v-flex>
 
                                 <v-flex xs6 sm6 md6>
-                                    <v-text-field type="date" label="Fecha de Registro">
+                                    <v-text-field type="date" v-model="fecha_registro" label="Fecha de Registro">
                                     </v-text-field>
                                 </v-flex>
 
@@ -139,7 +139,7 @@
                 dialog: false,
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
-                    { text: 'Codigo', value: 'nombre' },
+                    { text: 'Codigo', value: 'codigo' },
                     { text: 'Fecha Registro', value: 'fecha_registro', sortable: false  },
                     { text: 'Nombre', value: 'condicion', sortable: false  },
                     { text: 'Descripcion', value: 'descripcion', sortable: false  }                
@@ -193,7 +193,7 @@
 
             deleteItem (item) {
                 const index = this.desserts.indexOf(item)
-                confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
+                confirm('¿Estás seguro de que quieres eliminar esta categoria?') && this.desserts.splice(index, 1)
             },
 
             close () {
