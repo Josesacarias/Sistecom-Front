@@ -15,7 +15,7 @@
                         <v-btn slot="activator" color="primary" dark class="mb-2">Nuevo</v-btn>
                         <v-card>
                             <v-card-title>
-                            <span class="headline">Nueva Solicitud</span>
+                            <span class="headline">{{ formTitle }}</span>
                             </v-card-title>
                 
                             <v-card-text>
@@ -111,7 +111,7 @@
                 </v-toolbar>
             <v-data-table
                 :headers="headers"
-                :items="usuarios"
+                :items="solicitud"
                 :search="search"
                 class="elevation-1"
             >
@@ -141,13 +141,15 @@
                             </v-icon>
                         </template>
                     </td>
-                    <td>{{ props.item.nombre }}</td>
-                    <td>{{ props.item.rol }}</td>
-                    <td>{{ props.item.tipo_documento }}</td>
-                    <td>{{ props.item.num_documento }}</td>
-                    <td>{{ props.item.direccion }}</td>
-                    <td>{{ props.item.telefono }}</td>
-                    <td>{{ props.item.email }}</td>
+                    <td>{{ props.item.codigo }}</td>
+                    <td>{{ props.item.fecha_registro }}</td>
+                    <td>{{ props.item.nombre_solicitud }}</td>
+                    <td>{{ props.item.nombre_solicitante }}</td>
+                    <td>{{ props.item.dpi }}</td>
+                    <td>{{ props.item.fecha_entrega }}</td>
+                    <td>{{ props.item.fecha_solicitd }}</td>
+                    <td>{{ props.item.cantidad }}</td>
+                    <td>{{ props.item.descripcion }}</td>
                     <td>
                         <div v-if="props.item.condicion">
                             <span class="blue--text">Activo</span>
@@ -169,36 +171,32 @@
     export default {
         data(){
             return {
-                usuarios:[],                
+                solicitud:[],                
                 dialog: false,
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
                     { text: 'Codigo', value: 'codigo' },
-                    { text: 'Fecha de Registro', value: 'fecha_reg' },
-                    { text: 'Nombre de Solicitud', value: 'Nombre de Solicitante' },
+                    { text: 'Fecha Registro', value: 'fecha_registro' },
+                    { text: 'Nombre Solicitud', value: 'Nombre_solicitud' },
+                      { text: 'Nombre Solicitante', value: 'Nombre_solicitante' },
                     { text: 'Dpi', value: 'dpi', sortable: false  },
-                    { text: 'Fecha de Entrega', value: 'entrega', sortable: false  },
-                    { text: 'Fecha de solicitud', value: 'fecha_sol', sortable: false  },
+                    { text: 'Fecha Entrega', value: 'fecha_entrega', sortable: false  },
+                    { text: 'Fecha Solicitud', value: 'fecha_solicitud', sortable: false  },
                     { text: 'Cantidad', value: 'cantidad', sortable: false  },
-                    { text: 'Descripcion', value: 'des', sortable: false  }
+                    { text: 'Descripcion', value: 'descripcion', sortable: false  }
                                     
                 ],
                 search: '',
                 editedIndex: -1,
-                id: '',
-                idrol:'',
-                roles:[                   
-                ],
-                nombre:'',
-                tipo_documento: '',
-                documentos: ['DNI','RUC','PASAPORTE','CEDULA'],
-                num_documento: '',
-                direccion: '',
-                telefono: '',
-                email: '',
-                password:'',
-                actPassword:false,
-                passwordAnt:'',
+                codigo: '',
+                fecha_registro:'',
+                Nombre_solicitud: '',
+                Nombre_solicitante: '',
+                dpi:'',
+                fecha_entrega:'',
+                fecha_solicitud:'',
+                cantidad:'',
+                descripcion:'',
                 valida: 0,
                 validaMensaje:[],
                 adModal: 0,
@@ -209,7 +207,7 @@
         },
         computed: {
             formTitle () {
-                return this.editedIndex === -1 ? 'Nuevo usuario' : 'Actualizar usuario'
+                return this.editedIndex === -1 ? 'Nueva Solicitud' : 'Actualizar Solicitud'
             }
         },
 
@@ -226,7 +224,7 @@
         methods:{
             listar(){
                 let me=this;
-                axios.get('api/Usuarios/Listar').then(function(response){
+                axios.get('url').then(function(response){
                     //console.log(response);
                     me.usuarios=response.data;
                 }).catch(function(error){

@@ -48,7 +48,7 @@ export default {
   _methods: {
     ingresar() {
       this.error=null;
-      axios.post('api/Usuarios/Login', { email: this.email, password: this.password })
+      axios.post('url', { email: this.email, password: this.password })
         .then(respuesta => {
           return respuesta.data;
         })

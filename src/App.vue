@@ -143,20 +143,11 @@
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  prueba
+                  Tickets
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile :to="{ name: 'prueba'}">
-              <v-list-tile-action>
-                <v-icon>inventory</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  Proveedores
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
+           
 
           </v-list-group>
         </template>
