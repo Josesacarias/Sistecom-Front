@@ -13,6 +13,7 @@ import SolicitudCompra from './components/SolicitudCompra.vue'
 import OrdenCompra from './components/OrdenCompra.vue'
 import Tickets from './components/Tickets.vue'
 import Login from './components/Login.vue'
+import Login1 from './views/Login1.vue'
 
 Vue.use(Router)
 
@@ -92,7 +93,14 @@ export default new Router({
       path: '/Login ',
       name: 'Login',
       component: Login
+    },
+
+    {
+      path: '/Login1 ',
+      name: 'Login1',
+      component: Login1
     }
+
  
 
   ]

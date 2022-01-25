@@ -67,8 +67,8 @@
                                     </v-flex>
 
                                     <v-flex xs4 sm4 md4>
-                                    <v-select v-model="idcategoria"
-                                    :items="categorias" label="Estado ">
+                                    <v-select v-model="estado"
+                                    :items="estado" label="Estado ">
                                     </v-select>
                                     </v-flex>
 
@@ -171,7 +171,7 @@
                 </v-toolbar>
             <v-data-table
                 :headers="headers"
-                :items="articulos"
+                :items="Tickets"
                 :search="search"
                 class="elevation-1"
             >
@@ -203,7 +203,7 @@
                     </td>
                     <td>{{ props.item.codigo }}</td>
                     <td>{{ props.item.fecha_registro }}</td>
-                    <td>{{ props.item.nombre }}</td>
+                    <td>{{ props.item.tipo_estado}}</td>
                     <td>{{ props.item.codigo_sku }}</td>
                     <td>{{ props.item.codigo_barras }}</td>
                     <td>{{ props.item.categoria }}</td>
@@ -240,13 +240,13 @@
     export default {
         data(){
             return {
-                articulos:[],                
+                Tickets:[],                
                 dialog: false,
                 headers: [
                     { text: 'Opciones', value: 'opciones', sortable: false },
                     { text: 'Código', value: 'codigo', sortable: false },
                     { text: 'Fecha Registro', value: 'fecha_registro', sortable: false },
-                    { text: 'Nombre', value: 'nombre' },
+                    { text: 'estado', value: 'tipo_estado' },
                     { text: 'Codigo SKU', value: 'sku' },
                     { text: 'Codigo de barras', value: 'codigo_barras' },
                     { text: 'Categoria', value: 'categoria' },
@@ -266,6 +266,7 @@
                 editedIndex: -1,
                 id: '',
                 idcategoria:'',
+                estado:[Cerrado, abierto],
                 categorias:[                   
                 ],
                 codigo: '',
@@ -296,7 +297,7 @@
         },
         computed: {
             formTitle () {
-                return this.editedIndex === -1 ? 'Nuevo artículo' : 'Actualizar artículo'
+                return this.editedIndex === -1 ? 'Nuevo Ticket' : 'Actualizar Ticket'
             }
         },
 
@@ -315,7 +316,7 @@
                 let me=this;
                 axios.get('url').then(function(response){
                     //console.log(response);
-                    me.articulos=response.data;
+                    me.Tickets=response.data;
                 }).catch(function(error){
                     console.log(error);
                 });

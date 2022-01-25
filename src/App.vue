@@ -5,10 +5,11 @@
       :clipped="$vuetify.breakpoint.mdAndUp"
       app
       v-model="drawer"
+     
     >
       <v-list dense>
         <template>
-          <v-list-tile :to="{name:'home'}">
+          <v-list-tile :to="{name:'Home'}">
             <v-list-tile-action>
               <v-icon>home</v-icon>
             </v-list-tile-action>
@@ -137,7 +138,7 @@
                 </v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile :to="{ name: ''}">
+            <v-list-tile :to="{ name: 'Tickets'}">
               <v-list-tile-action>
                 <v-icon>description</v-icon>
               </v-list-tile-action>
@@ -296,9 +297,13 @@
         <span class="hidden-sm-and-down">SISTECOM</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>apps</v-icon>
+      
+      
+      <v-btn :to="{name: 'Login'}" color="primary">
+        <v-icon>apps</v-icon> Login
+      
       </v-btn>
+    
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
@@ -307,7 +312,7 @@
         </v-slide-y-transition>
       </v-container>
     </v-content>
-    <v-footer dark height="auto">
+    <v-footer dark >
       <v-layout justify-center>
         <v-flex text-xs-center>
           <v-card flat tile color="primary" class="white--text">
